@@ -1,10 +1,16 @@
 import './App.css'
 import axios from 'axios'
 
+const api = axios.create({ baseURL: "https://jsonplaceholder.typicode.com"});
+
 const loadData = async () =>{
   try {
-    const result = await axios.get("https://jsonplaceholder.typicode.com/posts/2");
-    console.log(result);
+    const result = await api.post("/posts", {
+      title: "title",
+      body: "body",
+      userId: 1
+    });
+    console.log(result.data);
   } catch (error) {
     console.log(error);
   }
